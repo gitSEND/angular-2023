@@ -1,0 +1,4 @@
+<h3>Person List</h3>
+<p *ngFor="let person of persons$ | async">
+   {{person.personId}}. {{person.name}} - {{person.city}}
+</p>

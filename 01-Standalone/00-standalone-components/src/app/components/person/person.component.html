@@ -1,0 +1,3 @@
+<div *ngFor="let p of persons">
+  <p>{{p.name}} | <a [routerLink]="['/person-detail', p.id]">View Detail</a></p>
+</div>

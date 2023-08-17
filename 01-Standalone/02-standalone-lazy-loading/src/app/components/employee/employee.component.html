@@ -1,0 +1,5 @@
+<h3>{{heading}}</h3>
+<div *ngFor="let p of persons">
+  <p>{{p.name}} | <a [routerLink]="['emp-detail', p.id]">View Detail</a> </p>
+</div>
+<router-outlet></router-outlet>

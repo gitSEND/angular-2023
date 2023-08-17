@@ -1,0 +1,8 @@
+<h3>Person List</h3>
+<div *ngFor="let person of persons | async" ngClass="sub-child-menu">
+  <p>{{person.name}} |
+    <a [routerLink]="['detail', person.personId]" routerLinkActive="active">Detail</a>
+</div>
+<div ngClass="sub-child-container">
+  <router-outlet></router-outlet>
+</div>

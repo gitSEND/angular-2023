@@ -1,0 +1,6 @@
+<h3>Click to Update Book</h3>
+<ul [ngClass]="'sub-menu'">
+  <li *ngFor="let book of books | async" [@onOffTrigger]="book.state" (click)="edit(book)">
+    {{book.id}}. {{book.name}}
+  </li>
+</ul>

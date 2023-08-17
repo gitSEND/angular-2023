@@ -1,0 +1,6 @@
+<div *ngIf="book">
+  <h3>Update Book for Id: {{book.id}}</h3>
+  <p>Book Name: <input [(ngModel)]="book.name"> </p>
+  <p>Book Author: <input [(ngModel)]="book.author"> </p>
+  <p> <button type="button" (click)="update()">Update</button> </p>
+</div>

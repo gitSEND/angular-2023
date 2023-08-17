@@ -1,0 +1,7 @@
+:host {
+  position: absolute;
+  background-color: #e0d7d5;
+  top: 20%;
+  left: 15%;
+  border: 3px solid black;
+}
