@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+<nav [ngClass]="'menu'">
+  <a routerLink="/home" routerLinkActive="active-link">Home</a> |
+  <a routerLink="/add-book" routerLinkActive="active-link">Add Book</a> |
+  <a routerLink="/manage-book" routerLinkActive="active-link">Manage Book</a>
+</nav>
+<div>
+  <router-outlet></router-outlet>
+</div>
