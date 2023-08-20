@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+.team {
+  border: 3px solid black;
+  width: 400px;
+}
+
+.employee {
+  border: 2px solid blue;
+  width: 350px;
+}
+
+.error {
+  color: red;
+}
+
+.submitted {
+  color: green;
+  font-size: 20px;
+}

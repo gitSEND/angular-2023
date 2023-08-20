@@ -1,0 +1,30 @@
+<h3>Create New Team</h3>
+<div class="team">
+  <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+    <p><b>Team Name : </b> <input formControlName="teamName">
+      <br />
+      <label *ngIf="teamName?.dirty && teamName?.errors?.['required']" class="error">Team name required. </label>
+    </p>
+    <b> Employees in Team :</b><br><br>
+    <label *ngIf="employees?.errors?.['required']" class="error"> Employee required. </label>
+    <label *ngIf="employees?.errors?.['maxlength']" class="error"> Max number of Employee can be 5 only. </label>
+
+    <div formArrayName="employees">
+      <div *ngFor="let emp of employees.controls; let i = index" class="employee">
+        <p> <b>Employee {{i + 1}} : </b>
+          <input [formControlName]="i"> &nbsp;
+          <button type="button" (click)="deleteEmployeeControl(i)">Delete</button>
+        </p>
+      </div>
+    </div>
+
+    <button type="button" (click)="addEmployeeControl()">Add More Employee</button><br />
+    <button type="button" (click)="insertEmployeeControl()">Insert Employee at number 2</button><br />
+    <button type="button" (click)="patchEmployeeValue()">Patch Value</button><br />
+    <button type="button" (click)="setEmployeeValue()">Create Default Employee List</button><br />
+    <button type="button" (click)="setEmployeeControl()">Set Default Employee at number 3</button><br />
+    <button type="button" (click)="resetEmployees()">Reset Employees</button><br />
+    <button type="button" (click)="clearEmployeeControls()">clear Employees</button><br /><br />
+    <button [disabled]="teamForm.invalid">SUBMIT</button>
+  </form>
+</div>
