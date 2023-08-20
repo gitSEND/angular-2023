@@ -1,0 +1,35 @@
+<input [formControl]="countryName">
+<button type="button" (click)="setCountryName()">Set Country Name</button>
+{{countryName.value}}
+
+<br /><br />
+
+<input [formControl]="cityName">
+<button type="button" (click)="setCityName()">Set City Name</button>
+{{cityName.value}}
+<br />
+
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input formControlName="name">
+      </td>
+    </tr>
+    <tr>
+      <td>age: </td>
+      <td>
+        <input formControlName="age">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+        <button type="button" (click)="setName()">Set Name</button>
+        <button type="button" (click)="setAge()">Set Age</button>
+      </td>
+    </tr>
+  </table>
+</form>
