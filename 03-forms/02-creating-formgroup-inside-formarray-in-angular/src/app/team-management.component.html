@@ -1,0 +1,36 @@
+<h3>Create New Team</h3>
+<div class="team">
+  <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+    <p><b>Team Name : </b> <input formControlName="teamName">
+      <br /><label *ngIf="teamName?.dirty && teamName?.hasError('required')" class="error">
+        Team name required. </label>
+    </p>
+
+    <b> Employees in Team :</b><br><br>
+    <div formArrayName="employees">
+      <div *ngFor="let emp of employees.controls; let i = index" [formGroupName]="i" class="employee">
+        <p> <b>Employee {{i + 1}} : </b> </p>
+        <p> Name: <input formControlName="empName">
+          <label *ngIf="emp.get('empName')?.hasError('required')" class="error">
+            Employee name required. </label>
+        </p>
+        <p> Age: <input formControlName="age">
+          <label *ngIf="emp.get('age')?.hasError('min')" class="error">
+            Minimum Age is 18. </label>
+          <label *ngIf="emp.get('age')?.hasError('required')" class="error">
+            Age required. </label>
+        </p>
+        <p> City: <input formControlName="city">
+          <label *ngIf="emp.get('city')?.hasError('required')" class="error">
+            City required. </label>
+        </p>
+        <p> <button type="button" (click)="deleteEmployeeControl(i)">Delete</button> </p>
+      </div>
+    </div>
+
+    <button type="button" (click)="addEmployeeControl()">Add Employee</button><br />
+    <button type="button" (click)="resetEmployees()">Reset Employees</button><br />
+    <button type="button" (click)="clearEmployeeControls()">clear Employees</button><br /><br />
+    <button>SUBMIT</button>
+  </form>
+</div>
