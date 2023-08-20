@@ -1,0 +1,37 @@
+<input [formControl]="company"> <br />
+<!--input [formControl]="company" [disabled]="true"-->
+<input [formControl]="state" [attr.disabled]="true"> <br />
+<!-- <input [formControl]="state" [disabled]="true"> <br /> -->
+
+<input [formControl]="cityName">
+<button (click)="cityNameDisable()">Disable</button>
+<button (click)="cityNameEnable()">Enable</button><br />
+
+<input [formControl]="countryName" [enableDisable]="cnAction">
+<button (click)="cnAction = 'disable'">Disable</button>
+<button (click)="cnAction = 'enable'">Enable</button>
+
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input formControlName="name">
+      </td>
+    </tr>
+    <tr>
+      <td>age: </td>
+      <td>
+        <input formControlName="age" [enableDisable]="ageAction">
+        <button (click)="ageAction = 'disable'">Disable</button>
+        <button (click)="ageAction = 'enable'">Enable</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
