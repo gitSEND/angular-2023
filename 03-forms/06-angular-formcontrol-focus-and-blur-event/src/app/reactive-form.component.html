@@ -1,0 +1,33 @@
+<input [formControl]="countryName" 
+	   (focus)="onFocusCountry()" 
+	   (blur)="onBlurCountry()"
+	   [ngStyle]="myStyle1">
+
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+	<table>
+		<tr>
+			<td>Name: </td>
+			<td>
+				<input formControlName="name" 
+				(focus)="onFocusName()"
+				(blur)="onBlurName()"
+				[ngStyle]="myStyle2">
+			</td>
+		</tr>		
+		<tr>
+			<td>age: </td>
+			<td>
+				<input formControlName="age"
+				 (focus)="onFocusAge()"
+				 (blur)="onBlurAge()"
+				 [ngStyle]="myStyle3">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button>Submit</button>
+			</td>
+		</tr>
+	</table>
+</form>
