@@ -1,0 +1,110 @@
+<h3>Person Form</h3>
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>
+        Name:
+        <input formControlName="pname">
+        <label *ngIf="pname.errors?.['required']" class="error">
+          Name required.
+        </label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" value="true" formControlName="isIndian"> Indian
+        <input type="radio" value="false" formControlName="isIndian"> Others
+        <br />
+        <label *ngIf="isIndian.errors?.['required']" class="error">
+          Select nationality.
+        </label>
+      </td>
+    </tr>
+
+    <ng-container *ngIf="isIndian.value === 'false'">
+      <tr>
+        <td>
+          Nationality:
+          <input formControlName="nationality">
+          <label *ngIf="personForm.get('nationality')?.errors?.['required']" class="error">
+            Enter nationality.
+          </label>
+        </td>
+      </tr>
+    </ng-container>
+
+    <tr>
+      <td>
+        <input type="radio" value="true" formControlName="isEmp"> Employee
+        <input type="radio" value="false" formControlName="isEmp"> Student
+        <br />
+        <label *ngIf="isEmp.errors?.['required']" class="error">
+          Select any.
+        </label>
+      </td>
+    </tr>
+
+    <ng-container *ngIf="isEmp.value === 'true'">
+      <tr>
+        <td>
+          <div formGroupName="company">
+            <table>
+              <tr>
+                <td>Company:</td>
+                <td>
+                  <input formControlName="compName">
+                  Enter company name.
+                  <label *ngIf="companyFG.get('compName')?.errors?.['required']" class="error">
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>Location:</td>
+                <td>
+                  <input formControlName="compLocation">
+                  Enter company location.
+                  <label *ngIf="companyFG.get('compLocation')?.errors?.['required']" class="error">
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>Profile:</td>
+                <td>
+                  <input formControlName="profile">
+                  <label *ngIf="companyFG.get('profile')?.errors?.['required']" class="error">
+                    Enter profile.
+                  </label>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+
+    <tr>
+      <td>
+        <input type="checkbox" formControlName="favBookEntry"> Enter favorite books?
+      </td>
+    </tr>
+
+    <ng-container *ngIf="favBookEntry.value === true">
+      <tr>
+        <td>
+          <div formArrayName="favBooks">
+            <div *ngFor="let b of favBooks.controls; index as i">
+              <input [formControlName]="i">
+              <label *ngIf="favBooks.controls[i].errors?.['required']" class="error">
+                Enter the name.
+              </label>
+              <button type="button" (click)="deleteBook(i)">Delete</button>
+            </div>
+          </div>
+          <button type="button" (click)="addMoreBooks()">Add More Books</button>
+        </td>
+      </tr>
+    </ng-container>
+
+  </table>
+  <button>Submit</button>
+</form>
