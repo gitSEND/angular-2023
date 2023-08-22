@@ -1,0 +1,66 @@
+<h3>Single Upload with Progress</h3>
+<table>
+  <tr>
+    <td>
+      <input type="file" (change)="upload($event.target)">
+    </td>
+    <td>
+      {{percentCompleted}}% Uploaded
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div *ngIf="isSingleUploaded" class="success">
+        File uploaded successfully with Url:
+        <b>{{urlAfterUpload}}</b>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<h3>Multiple Upload with Progress</h3>
+<div *ngIf="isMultipleUploaded" class="success">File uploaded and form submitted successfully.
+  <br />
+  <br />
+</div>
+
+<form [formGroup]="uploadForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td colspan="3">
+        Title:
+        <input formControlName="title">
+        <label *ngIf="title.errors?.['required']" class="error">
+          Title required.
+        </label>
+      </td>
+    </tr>
+    <div formArrayName="filesToUpload">
+      <div *ngFor="let f of filesToUpload.controls; index as i">
+        <tr>
+          <td>
+            <input [formControlName]="i" type="file" id="file{{i}}">
+            <label *ngIf="filesToUpload.controls[i].errors?.['required']" class="error">
+              Select the file.
+            </label>
+            <label *ngIf="filesToUpload.controls[i].errors?.['inValidExt']
+              && !filesToUpload.controls[i].errors?.['required']" class="error">
+              Invalid file extension.
+            </label>
+          </td>
+          <td>{{ percentUploaded[i] }}% </td>
+          <td>
+            <button type="button" (click)="deleteFile(i)">Delete</button>
+          </td>
+        </tr>
+      </div>
+    </div>
+    <tr>
+      <td colspan="3">
+        <button type="submit">Submit</button>
+        <button type="button" (click)="addMoreFiles()">Add More Files</button>
+        <button type="button" (click)="formReset()">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>
