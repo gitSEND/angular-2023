@@ -1,0 +1,51 @@
+<h3>User Information- Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted" class="success">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Select Profile: </td>
+      <td>
+        <select formControlName="profile" (change)="onProfileChange()">
+          <option [ngValue]="null" disabled>Choose your profile</option>
+          <option *ngFor="let prf of allProfiles" [ngValue]="prf">
+            {{ prf.prName }}
+          </option>
+        </select>
+        <div *ngIf="userForm.dirty && profile!.invalid" class="error">
+          Profile required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input formControlName="userName">
+        <div *ngIf="userForm.dirty && userName!.invalid" class="error">
+          User Name required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Select Technologies: </td>
+      <td>
+        <select multiple formControlName="technologies" [compareWith]="compareTech">
+          <option *ngFor="let tech of allTechnologies" [ngValue]="tech">
+            {{ tech.techName }}
+          </option>
+        </select>
+        <div *ngIf="userForm.dirty && technologies!.invalid" class="error">
+          Technologies required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+        <button type="button" (click)="setDefaultValues()">Set Default</button>
+        <button type="button" (click)="resetForm(userForm)">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>
