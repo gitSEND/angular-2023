@@ -1,0 +1,40 @@
+<h3>Create New Team
+  <button type="button" (click)="loadTeam('Java Team')"> Load Default Team </button>
+  <button type="button" (click)="resetTeamForm()"> Reset </button>
+</h3>
+<div *ngIf="formSubmitted && teamForm.pristine" class="submitted"> Form submitted successfully. </div>
+<div class="team">
+  <form [formGroup]="teamForm" (ngSubmit)="onFormSubmit()">
+    <p>Team Name : <input formControlName="teamName">
+      <br /><label *ngIf="teamForm.get('teamName')?.invalid && teamForm.get('teamName')?.dirty" class="error"> Team name
+        is required. </label>
+    </p>
+    <p>Team Manager : <input formControlName="teamManager"></p>
+
+    <b>Department :</b><br>
+    <div formGroupName="teamDept" class="department">
+      <p>Department Head : <input formControlName="deptHead"></p>
+      <p>Department Name : <input formControlName="deptName"></p>
+    </div>
+    <div class="all-emp">
+      <b> Employees in Team :</b><br><br>
+      <div formArrayName="employees">
+        <div *ngFor="let emp of empFormArray.controls; let idx = index" [formGroupName]="idx" class="employee">
+          <p> <b>Employee : {{idx + 1}}</b> </p>
+          <p>Emp Id : <input formControlName="empId"></p>
+          <p>Emp Name : <input formControlName="empName"></p>
+          <p>Skill :
+            <select formControlName="skill">
+              <option *ngFor="let skill of allSkills | async" [ngValue]="skill.name">
+                {{ skill.displayName }}
+              </option>
+            </select>
+          </p>
+          <p><button type="button" (click)="deleteEmployee(idx)">Delete</button></p>
+        </div>
+      </div>
+      <button type="button" (click)="addEmployee()">Add More Employee</button>
+    </div> <br />
+    <button [disabled]="teamForm.invalid">SUBMIT</button>
+  </form>
+</div>
