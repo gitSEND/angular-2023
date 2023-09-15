@@ -1,0 +1,92 @@
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Username: *</td>
+      <td>
+        <input formControlName="username">
+        <div *ngIf="username.dirty && username.errors" class="error">
+          <div *ngIf="username.errors['required']">
+            Username required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Password: *</td>
+      <td>
+        <input formControlName="password" type="password">
+        <div *ngIf="password.dirty && password.errors" class="error">
+          <div *ngIf="password.errors['required']">
+            Password required.
+          </div>
+          <div *ngIf="password.errors['matchForUsername']">
+            Password can not be same as Username.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Confirm Password: *</td>
+      <td>
+        <input formControlName="confirmPassword" type="password">
+        <div *ngIf="confirmPassword.dirty && confirmPassword.errors" class="error">
+          <div *ngIf="confirmPassword.errors['required']">
+            Confirm Password required.
+          </div>
+          <div *ngIf="confirmPassword.errors['cnfPassword']">
+            Confirm Password not matched.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Notification Mode: *</td>
+      <td>
+        <input type="radio" value="email" formControlName="notificationMode"> Email
+        <input type="radio" value="mobile" formControlName="notificationMode"> Mobile
+        <input type="radio" value="both" formControlName="notificationMode"> Both
+      </td>
+    </tr>
+    <tr>
+      <td>Email: </td>
+      <td>
+        <input formControlName="email">
+        <div *ngIf="email.dirty && email.errors" class="error">
+          <div *ngIf="email.errors['required']">
+            Email required.
+          </div>
+          <div *ngIf="email.errors['email']">
+            Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Mobile Number: </td>
+      <td>
+        <input formControlName="mobileNumber">
+        <div *ngIf="mobileNumber!.dirty && mobileNumber!.errors" class="error">
+          <div *ngIf="mobileNumber!.errors['required']">
+            Mobile number required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Favorite Locations: *</td>
+      <td>
+        <div formArrayName="favoriteLocations">
+          <div *ngFor="let loc of favoriteLocations.controls; index as i">
+            <input [formControlName]="i">
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button [disabled]="userForm.invalid">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
