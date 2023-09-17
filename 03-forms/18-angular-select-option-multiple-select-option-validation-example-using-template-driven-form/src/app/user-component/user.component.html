@@ -1,0 +1,51 @@
+<h3>User Information</h3>
+<p *ngIf="isValidFormSubmitted" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+  <table>
+    <tr>
+      <td>Select Profile: </td>
+      <td>
+        <select name="profile" [(ngModel)]="user.profile" required #profile="ngModel" (change)="onProfileChange()">
+          <option [ngValue]="null" disabled>Choose your profile</option>
+          <option *ngFor="let prf of allProfiles" [ngValue]="prf">
+            {{ prf.prName }}
+          </option>
+        </select>
+        <div *ngIf="profile.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          Profile required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td> <input name="name" [ngModel]="user.userName" required #name="ngModel">
+        <div *ngIf="name.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          Name required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Select Technologies: </td>
+      <td>
+        <select multiple name="selectedTechs" [compareWith]="compareTech" [ngModel]="user.technologies" required
+          #selectedTechs="ngModel">
+          <option *ngFor="let tech of allTechnologies" [ngValue]="tech">
+            {{ tech.techName }}
+          </option>
+        </select>
+        <div *ngIf="selectedTechs.invalid && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          Technologies required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+        <button type="button" (click)="setDefaultValues()">Set Default</button>
+        <button type="button" (click)="resetForm(userForm)">Reset</button>
+      </td>
+    </tr>
+  </table>
+</form>
