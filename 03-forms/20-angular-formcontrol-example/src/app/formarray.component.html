@@ -1,0 +1,15 @@
+<h3> Using FormControl with FormArray </h3>
+<div> 
+    <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+      <div formArrayName="users">
+        <div *ngFor="let user of users.controls; index as idx">
+          <input [formControlName]="idx" placeholder="Enter User Name">
+		  <button (click)="deleteUserField(idx)">Delete</button>
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+	  <button type="button" (click)="addUserField()">Add More User</button>
+    </form>
+</div>	
+
+ 
