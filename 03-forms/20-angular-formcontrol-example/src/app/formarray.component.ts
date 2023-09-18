@@ -13,15 +13,19 @@ export class FormArrayDemoComponent {
       new FormControl()
     ])
   });
+
   get users(): FormArray {
     return this.userForm.get('users') as FormArray;
   }
+
   addUserField() {
     this.users.push(new FormControl());
   }
+
   deleteUserField(index: number) {
     this.users.removeAt(index);
   }
+
   onFormSubmit() {
     console.log(this.users.value); // Gives FormArray data
     console.log(this.userForm.value); // Gives Complete form data
