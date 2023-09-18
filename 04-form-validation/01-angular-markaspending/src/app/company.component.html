@@ -1,0 +1,41 @@
+<h3>markAsPending() Example</h3>
+<div *ngIf="formSubmitted && compForm.pristine" class="submitted"> Form submitted successfully. </div>
+
+<div class="team">
+  <form [formGroup]="compForm" (ngSubmit)="onFormSubmit()">
+    <p>Company Name* : <br /><input formControlName="compName">
+      <br /><label *ngIf="compForm.get('compName')?.hasError('minlength')" class="error">
+        Minimum length 3.
+      </label> <br />
+      <label *ngIf="compForm.get('compName')?.hasError('compNameExists')" class="error">
+        Company name exists.
+      </label>
+    </p>
+
+    Locations* : <br />
+    <div formArrayName="locations">
+      <div *ngFor="let loc of locations.controls; let idx = index">
+        <input [formControlName]="idx" placeholder="input the location"> <br /><br />
+        <label *ngIf="loc.invalid" class="error">
+          Minimum length 2.
+        </label>
+        <label *ngIf="loc.hasError('locNameExists')" class="error">
+          Location exists.
+        </label>
+      </div>
+    </div>
+
+    <button [disabled]="!(compForm.status === 'VALID') || !compForm.dirty">SAVE</button>&nbsp;
+    <button type="button" (click)="markPending()">MARK AS PENDING</button>
+  </form>
+</div>
+
+<br /><b>Status :</b>
+<br /><b>Form</b> : {{compForm.status}}
+<br /><b>compName</b> : {{compForm.get('compName')?.status}}
+<br /><b>locations</b> : {{compForm.get('locations')?.status}}
+
+<br /><br /><b>Pending : </b>
+<br /><b>Form</b> : {{compForm.pending}}
+<br /><b>compName</b> : {{compForm.get('compName')?.pending}}
+<br /><b>locations</b> : {{compForm.get('locations')?.pending}}
