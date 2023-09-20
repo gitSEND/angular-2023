@@ -1,0 +1,62 @@
+<h3>User Form</h3>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Full Name: </td>
+      <td>
+        <input formControlName="fullName">
+        <div *ngIf="fullName.dirty && fullName.errors" class="error">
+          <div *ngIf="fullName.errors['required']">
+            Full name required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Username: </td>
+      <td>
+        <input formControlName="username">
+        <div *ngIf="username.dirty && username.errors" class="error">
+          <div *ngIf="username.errors['required']">
+            Username required.
+          </div>
+          <div *ngIf="username.errors['minlength']">
+            Minimum length should be 5.
+          </div>
+          <div *ngIf="username.errors['maxlength']">
+            Maximum length should be 10.
+          </div>
+          <div *ngIf="username.errors['usernameExists']">
+            Username already exists.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Password: </td>
+      <td>
+        <input formControlName="password" type="password">
+        <div *ngIf="password.dirty && password.errors" class="error">
+          <div *ngIf="password.errors['required']">
+            Password required.
+          </div>
+          <div *ngIf="password.errors['minlength']">
+            Minimum length should be 5.
+          </div>
+          <div *ngIf="password.errors['maxlength']">
+            Maximum length should be 15.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button [disabled]="userForm.invalid">Submit</button><br />
+        <button type="button" (click)="addValidators()">Add Sync Validators</button><br />
+        <button type="button" (click)="addAsyncValidators()">Add Async Validators</button><br />
+        <button type="button" (click)="clearUserValidators()">Clear Sync Validators</button><br />
+        <button type="button" (click)="clearUserAsyncValidators()">Clear Async Validators</button>
+      </td>
+    </tr>
+  </table>
+</form>
