@@ -1,0 +1,32 @@
+<h3>markAsDirty() Example</h3>
+<div *ngIf="formSubmitted && compForm.pristine" class="submitted"> Form submitted successfully. </div>
+<div class="team">
+  <form [formGroup]="compForm" (ngSubmit)="onFormSubmit()">
+    <p>Company Name* : <br /><input formControlName="compName">
+      <br /><label *ngIf="compForm.get('compName')?.hasError('minlength')" class="error">
+        Minimum length 3. </label>
+    </p>
+    <p>No. Of Employee* : <br /><input formControlName="empNo">
+      <br /><label *ngIf="compForm.get('empNo')?.hasError('minlength')" class="error">
+        Minimum length 2. </label>
+    </p>
+    Locations* : <br />
+    <div formArrayName="locations">
+      <div *ngFor="let emp of locations.controls; let idx = index">
+        <input [formControlName]="idx"> <br /><br />
+      </div>
+      <label *ngIf="compForm.get('locations')?.invalid" class="error">
+        Minimum length 3. </label>
+    </div>
+    <button [disabled]="!compForm.dirty">SAVE</button>&nbsp; <button type="button"
+      (click)="compForm.reset()">NEXT</button>
+    &nbsp;<button type="button" (click)="markDirty()">MARK AS DIRTY</button>
+  </form>
+</div>
+
+<br /><b>Form Touched</b> : {{compForm.touched}}
+<br /><b>Form Dirty</b> : {{compForm.dirty}}
+<br /><br /><b>Dirty controls: </b>
+<br /><b>compName</b> : {{compForm.get('compName')?.dirty}}
+<br /><b>empNo</b> : {{compForm.get('empNo')?.dirty}}
+<br /><b>locations</b> : {{compForm.get('locations')?.dirty}}
