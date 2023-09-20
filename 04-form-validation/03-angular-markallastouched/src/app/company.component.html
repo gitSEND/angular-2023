@@ -1,0 +1,24 @@
+<h3>markAllAsTouched() Example</h3>
+<div *ngIf="formSubmitted && compForm.pristine" class="submitted"> Form submitted successfully. </div>
+<div class="team">
+  <form [formGroup]="compForm" (ngSubmit)="onFormSubmit()">
+    <p>Company Name* : <br /><input formControlName="compName">
+      <br /><label *ngIf="compForm.get('compName')?.touched && compForm.get('compName')?.hasError('required')"
+        class="error">
+        Company name required. </label>
+    </p>
+    <p>CEO* : <br /><input formControlName="ceo">
+      <br /><label *ngIf="compForm.get('ceo')?.touched && compForm.get('ceo')?.hasError('required')" class="error">
+        CEO required. </label>
+    </p>
+    Locations* : <br />
+    <div formArrayName="locations">
+      <div *ngFor="let emp of locations.controls; let idx = index">
+        <input [formControlName]="idx"> <br /><br />
+      </div>
+      <label *ngIf="compForm.get('locations')?.touched && compForm.get('locations')?.invalid" class="error">
+        Locations required. </label>
+    </div>
+    <button>SUBMIT</button>
+  </form>
+</div>
