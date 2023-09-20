@@ -1,0 +1,53 @@
+<table>
+  <tr>
+    <td>Username: </td>
+    <td>
+      <input [formControl]="username">
+      <div *ngIf="username.hasError('minlength')" class="error">
+        Minimum length should be 5.
+      </div>
+      <div *ngIf="username.hasError('maxlength')" class="error">
+        Maximum length should be 10.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Company: </td>
+    <td>
+      <input [formControl]="company">
+      <div *ngIf="company.hasError('required')" class="error">
+        Name required.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Primary Email: </td>
+    <td>
+      <input [formControl]="primaryEmail">
+      <div *ngIf="primaryEmail.hasError('email')" class="error">
+        Email not valid.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Secondary email: </td>
+    <td>
+      <input [formControl]="secondaryEmail">
+      <div *ngIf="secondaryEmail.hasError('pattern')" class="error">
+        Email not valid.
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Age: </td>
+    <td>
+      <input [formControl]="age">
+      <div *ngIf="age.hasError('min')" class="error">
+        Minimum age should be 18.
+      </div>
+      <div *ngIf="age.hasError('max')" class="error">
+        Maximum age should be 50.
+      </div>
+    </td>
+  </tr>
+</table>
