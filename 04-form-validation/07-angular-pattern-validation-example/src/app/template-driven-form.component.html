@@ -1,0 +1,63 @@
+<h3>Template-driven Form</h3>
+<p *ngIf="isValidFormSubmitted" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+  <table>
+    <tr>
+      <td>User Name:</td>
+      <td>
+        <input name="username" [ngModel]="user.username" required [pattern]="unamePattern" #uname="ngModel">
+        <div *ngIf="uname.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="uname.errors['required']">
+            User name required.
+          </div>
+          <div *ngIf="uname.errors['pattern']">
+            User name not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input name="password" type="password" [ngModel]="user.password" required [pattern]="pwdPattern" #pwd="ngModel">
+        <div *ngIf="pwd.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="pwd.errors['required']">
+            Password required.
+          </div>
+          <div *ngIf="pwd.errors['pattern']">
+            Password not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Mobile Number:</td>
+      <td>
+        <input name="mobileNumber" [ngModel]="user.mobileNumber" [pattern]="mobnumPattern" #mobnum="ngModel">
+        <div *ngIf="mobnum.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="mobnum.errors['pattern']">
+            Mobile number not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>
+        <input name="email" [ngModel]="user.email" [pattern]="emailPattern" #userEmail="ngModel">
+        <div *ngIf="userEmail.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="userEmail.errors['pattern']">
+            User name not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>

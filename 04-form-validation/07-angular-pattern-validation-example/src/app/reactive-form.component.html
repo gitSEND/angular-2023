@@ -1,0 +1,63 @@
+<h3>Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted && userForm.pristine" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>User Name: </td>
+      <td>
+        <input formControlName="username">
+        <div *ngIf="username.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="username.errors['required']">
+            User name required.
+          </div>
+          <div *ngIf="username.errors['pattern']">
+            User name not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Password: </td>
+      <td>
+        <input type="password" formControlName="password">
+        <div *ngIf="password.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="password.errors['required']">
+            Password required.
+          </div>
+          <div *ngIf="password.errors['pattern']">
+            Password not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Mobile Number: </td>
+      <td>
+        <input formControlName="mobileNumber">
+        <div *ngIf="mobileNumber.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="mobileNumber.errors['pattern']">
+            Mobile number not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Email: </td>
+      <td>
+        <input formControlName="email">
+        <div *ngIf="email.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="email.errors['pattern']">
+            Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
