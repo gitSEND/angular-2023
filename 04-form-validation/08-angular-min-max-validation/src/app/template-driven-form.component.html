@@ -1,0 +1,50 @@
+<h3>Template-driven Form</h3>
+<p *ngIf="isValidFormSubmitted" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+  <table>
+    <tr>
+      <td>Number-1:</td>
+      <td>
+        <input name="num1" [ngModel]="user.num1" required [customMin]="minNum" #numberOne="ngModel" />
+        <div *ngIf="numberOne.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="numberOne.errors['required']">Enter your number.</div>
+          <div *ngIf="numberOne.errors['customMin']">
+            Minimum required number is {{ minNum }}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Number-2:</td>
+      <td>
+        <input name="num2" [ngModel]="user.num2" required [customMax]="maxNum" #numberTwo="ngModel" />
+        <div *ngIf="numberTwo.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="numberTwo.errors['required']">Enter your number.</div>
+          <div *ngIf="numberTwo.errors['customMax']">
+            Maximum number can be {{ maxNum }}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Number-3:</td>
+      <td>
+        <input name="num3" [ngModel]="user.num3" required [customMin]="minNum" [customMax]="maxNum"
+          #numberThree="ngModel" />
+        <div *ngIf="numberThree.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="numberThree.errors['required']">Enter your number.</div>
+          <div *ngIf="numberThree.errors['customMin'] || numberThree.errors['customMax']">
+            Number must be between {{ minNum }} and {{ maxNum }}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>

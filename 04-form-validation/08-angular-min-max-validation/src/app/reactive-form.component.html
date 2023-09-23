@@ -1,0 +1,69 @@
+<h3>Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted && userForm.pristine" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Number-1: </td>
+      <td>
+        <input formControlName="num1">
+        <div *ngIf="num1.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="num1.errors['required']">
+            Enter your number.
+          </div>
+          <div *ngIf="num1.errors['min']">
+            Minimum required number is {{minNum}}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Number-2: </td>
+      <td>
+        <input formControlName="num2">
+        <div *ngIf="num2.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="num2.errors['required']">
+            Enter your number.
+          </div>
+          <div *ngIf="num2.errors['max']">
+            Maximum number can be {{maxNum}}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Number-3: </td>
+      <td>
+        <input formControlName="num3">
+        <div *ngIf="num3.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="num3.errors['required']">
+            Enter your number.
+          </div>
+          <div *ngIf="num3.errors['min'] || num3.errors['max']">
+            Number must be between {{minNum}} and {{maxNum}}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Number-4: </td>
+      <td>
+        <input formControlName="num4" [customMax]="maxNum" [customMin]="minNum">
+        <div *ngIf="num4.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="num4.errors['required']">
+            Enter your number.
+          </div>
+          <div *ngIf="num4.errors['customMin'] || num4.errors['customMax']">
+            Number must be between {{ minNum }} and {{ maxNum }}.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
