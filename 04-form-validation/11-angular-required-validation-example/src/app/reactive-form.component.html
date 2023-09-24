@@ -1,0 +1,60 @@
+<h3>Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted && userForm.pristine" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input formControlName="userName">
+        <div *ngIf="userName.errors?.['required'] && isValidFormSubmitted != null && !isValidFormSubmitted"
+          [ngClass]="'error'">
+          Name required.
+        </div>
+        <div *ngIf="userName.errors?.['minlength'] && isValidFormSubmitted != null && !isValidFormSubmitted"
+          [ngClass]="'error'">
+          Name must be at least 5 characters long.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Gender:</td>
+      <td>
+        <input type="radio" value="male" formControlName="gender"> Male
+        <input type="radio" value="female" formControlName="gender"> Female
+        <div *ngIf="gender.invalid && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          Gender required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Select Profile: </td>
+      <td>
+        <select formControlName="profile">
+          <option [ngValue]="null" disabled>Select a profile</option>
+          <option *ngFor="let prf of allProfiles" [ngValue]="prf">
+            {{ prf.prName }}
+          </option>
+        </select>
+        <div *ngIf="profile.invalid && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          Profile required.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td> Accept T & C </td>
+      <td>
+        <input type="checkbox" formControlName="isTCAccepted">
+        <div *ngIf="isTCAccepted.invalid && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          Accept T & C.
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
