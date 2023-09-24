@@ -1,0 +1,44 @@
+<h3>Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted && userForm.pristine" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input formControlName="userName">
+        <div *ngIf="userName.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="userName.errors['minlength']">
+            Name must be at least 5 characters long.
+          </div>
+          <div *ngIf="userName.errors['maxlength']">
+            Name can be max 10 characters long.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>City: </td>
+      <td>
+        <input formControlName="city">
+        <div *ngIf="city.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="city.errors['required']">
+            City required.
+          </div>
+          <div *ngIf="city.errors['minlength']">
+            City must be at least 3 characters long.
+          </div>
+          <div *ngIf="city.errors['maxlength']">
+            City can be max 8 characters long.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>

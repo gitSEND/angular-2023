@@ -1,0 +1,38 @@
+<h3>Template-driven Form</h3>
+<p *ngIf="isValidFormSubmitted" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>
+        <input name="userName" [ngModel]="user.userName" minlength="5" maxlength="10" #uname="ngModel">
+        <div *ngIf="uname.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="uname.errors['minlength']">
+            Name must be at least 5 characters long.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td>
+        <input name="city" [ngModel]="user.city" required minlength="3" maxlength="8" #city="ngModel">
+        <div *ngIf="city.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="city.errors['required']">
+            City required.
+          </div>
+          <div *ngIf="city.errors['minlength']">
+            City must be at least 3 characters long.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
