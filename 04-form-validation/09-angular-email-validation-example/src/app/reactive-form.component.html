@@ -1,0 +1,49 @@
+<h3>Reactive Form</h3>
+<p *ngIf="isValidFormSubmitted && userForm.pristine" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Primary Email: </td>
+      <td>
+        <input formControlName="primaryEmail">
+        <div *ngIf="primaryEmail.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="primaryEmail.errors['email']">
+            Primary Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Secondary Email: </td>
+      <td>
+        <input formControlName="secondaryEmail">
+        <div *ngIf="secondaryEmail.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="secondaryEmail.errors['email']">
+            Secondary Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Official Email: </td>
+      <td>
+        <input formControlName="officialEmail">
+        <div *ngIf="officialEmail.errors && isValidFormSubmitted != null && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="officialEmail.errors['required']">
+            Official Email required.
+          </div>
+          <div *ngIf="officialEmail.errors['pattern']">
+            Official Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>

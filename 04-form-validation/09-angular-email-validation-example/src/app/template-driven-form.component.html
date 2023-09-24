@@ -1,0 +1,50 @@
+<h3>Template-driven Form</h3>
+<p *ngIf="isValidFormSubmitted" [ngClass]="'success'">
+  Form submitted successfully.
+</p>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+  <table>
+    <tr>
+      <td>Primary Email:</td>
+      <td>
+        <input name="primaryEmail" [ngModel]="user.primaryEmail" email #prmEmail="ngModel">
+        <div *ngIf="prmEmail.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="prmEmail.errors['email']">
+            Primary Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Secondary Email:</td>
+      <td>
+        <input name="secondaryEmail" [ngModel]="user.secondaryEmail" [email]="validateEmail" #secEmail="ngModel">
+        <div *ngIf="secEmail.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="secEmail.errors['email']">
+            Secondary Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Official Email:</td>
+      <td>
+        <input name="officialEmail" [ngModel]="user.officialEmail" required [pattern]="emailPattern"
+          #offEmail="ngModel">
+        <div *ngIf="offEmail.errors && userForm.submitted && !isValidFormSubmitted" [ngClass]="'error'">
+          <div *ngIf="offEmail.errors['required']">
+            Official Email required.
+          </div>
+          <div *ngIf="offEmail.errors['pattern']">
+            Official Email not valid.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
