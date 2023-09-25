@@ -1,0 +1,63 @@
+<h2>Data using Async Pipe</h2>
+
+<b>Book Details</b><br />
+
+<ul>
+  <li *ngFor="let book of allBooks$ | async">
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
+
+<br /><b>Favorite Book Detail</b><br />
+
+<div *ngIf="favBook$ | async as book; else loading">
+  Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+</div>
+<ng-template #loading>
+  <img src="assets/images/loading.gif">
+</ng-template>
+
+<br /><b>Favorite Book Name</b>
+
+<div *ngIf="favBookName$ | async as bookName">
+  Name: {{bookName}}
+</div>
+
+<br /><b>My All Favorite Books</b><br />
+
+<ul>
+  <li *ngFor="let book of myAllfavBooks$ | async">
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
+
+<br /><b>Search Similar Books for Id</b><br /><br />
+
+<input [(ngModel)]="bookId" (input)="searchSimilarBooks(bookId)">
+
+<ul>
+  <li *ngFor="let book of similarBooks$ | async">
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
+
+
+
+
+<h2>Data using subscribe</h2>
+
+<b>Software Books</b><br />
+
+<ul>
+  <li *ngFor="let book of softBooks">
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
+
+<br /><b>All Favorite Books</b><br />
+
+<ul>
+  <li *ngFor="let book of allFavBooks">
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
