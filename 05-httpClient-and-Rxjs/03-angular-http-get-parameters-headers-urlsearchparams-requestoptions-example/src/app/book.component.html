@@ -1,0 +1,110 @@
+<h3>Book Details</h3>
+<table>
+  <tr>
+    <th> Id</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Writer</th>
+  </tr>
+  <tr *ngFor="let bk of allBooks">
+    <td>{{bk.id}}</td>
+    <td>{{bk.name}}</td>
+    <td>{{bk.category}}</td>
+    <td>{{bk.writer}}</td>
+  </tr>
+</table>
+
+<h3>Get Book by ID </h3>
+<div>
+  <form #bookByIdForm="ngForm" (ngSubmit)="bookById(bookByIdForm)">
+    <div>
+      Enter Book Id: <input name="bookId" ngModel required #bookId="ngModel">
+    </div>
+    <div> <br />
+      <button [disabled]="bookByIdForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>
+
+<br />
+<div *ngIf="bookByIdForm.submitted">
+  <div *ngIf="book; else loading">
+    <table>
+      <tr>
+        <th> Id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Writer</th>
+      </tr>
+      <tr>
+        <td>{{book.id}}</td>
+        <td>{{book.name}}</td>
+        <td>{{book.category}}</td>
+        <td>{{book.writer}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div *ngIf="dataAvailableById; else notAvailable">
+      Loading data...
+    </div>
+    <ng-template #notAvailable> Data not Aavailable. </ng-template>
+  </ng-template>
+</div>
+
+<h3>Filter Books </h3>
+<div>
+  <form #filterBookForm="ngForm" (ngSubmit)="filterBooks(filterBookForm)">
+    <div>
+      Category:
+      <select name="category" ngModel>
+        <option value="" disabled>Select a Category</option>
+        <option *ngFor="let category of categories" [ngValue]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+    </div> <br />
+    <div>
+      Writer:
+      <select name="writer" ngModel>
+        <option value="" disabled>Select a Writer</option>
+        <option *ngFor="let writer of writers" [ngValue]="writer.name">
+          {{ writer.name }}
+        </option>
+      </select>
+    </div>
+    <div><br />
+      <button>Submit</button>
+    </div>
+  </form>
+</div>
+
+<br />
+<div *ngIf="filterBookForm.submitted">
+  <div *ngIf="filteredListOfBooks; else loading">
+    <table>
+      <tr>
+        <th> Id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Writer</th>
+      </tr>
+      <tr *ngFor="let bk of filteredListOfBooks">
+        <td>{{bk.id}}</td>
+        <td>{{bk.name}}</td>
+        <td>{{bk.category}}</td>
+        <td>{{bk.writer}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <div *ngIf="dataAvailableAfterFilter; else notAvailable">
+      Loading data...
+    </div>
+    <ng-template #notAvailable> Data not Aavailable. </ng-template>
+  </ng-template>
+</div>
+
+<div *ngIf="errorMessage" [ngClass]="'error'"> {{errorMessage}} </div>
