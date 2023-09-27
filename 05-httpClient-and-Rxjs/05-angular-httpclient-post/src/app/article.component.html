@@ -1,0 +1,53 @@
+<h3>Create Article</h3>
+<p *ngIf="dataSaved && articleForm.pristine" ngClass="success">
+  Article created successfully.
+</p>
+
+<form [formGroup]="articleForm" (ngSubmit)="onFormSubmit()">
+  <table>
+    <tr>
+      <td>Title: </td>
+      <td>
+        <input formControlName="title">
+        <div *ngIf="title?.dirty && title?.errors" class="error">
+          <div *ngIf="title?.errors?.['required']">
+            Title required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Category: </td>
+      <td>
+        <input formControlName="category">
+        <div *ngIf="category?.dirty && category?.errors" class="error">
+          <div *ngIf="category?.errors?.['required']">
+            Category required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Writer: </td>
+      <td>
+        <input formControlName="writer">
+        <div *ngIf="writer?.dirty && writer?.errors" class="error">
+          <div *ngIf="writer?.errors?.['required']">
+            Writer required.
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button [disabled]="articleForm.invalid">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<h3>Article Details</h3>
+<p *ngFor="let article of allArticles$ | async">
+  {{article.id}} | {{article.title}} |
+  {{article.category}} | {{article.writer}}
+</p>
