@@ -1,0 +1,7 @@
+<h3>Add Person</h3>
+<form [formGroup]="personForm" (ngSubmit)="onFormSubmit()">
+  <p> Name: <input formControlName="name"> </p>
+  <p> City: <input formControlName="city"> </p>
+  <p> Mobile: <input formControlName="mobile"> </p>
+  <p> <button>Add</button> </p>
+</form>
