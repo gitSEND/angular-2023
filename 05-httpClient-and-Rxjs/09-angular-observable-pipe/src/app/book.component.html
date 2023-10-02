@@ -1,0 +1,16 @@
+<b>All Favorite Books</b><br/>
+<ul>
+  <li *ngFor="let book of allFavBooks" >
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
+
+<b>Search Similar Books</b><br/><br/>
+  
+ID: <input [(ngModel)]="bookId" (input)="searchSimilarBooks(bookId)">
+
+<ul>
+  <li *ngFor="let book of similarBooks" >
+    Id: {{book.id}}, Name: {{book.name}}, Category: {{book.category}}
+  </li>
+</ul>
