@@ -1,0 +1,24 @@
+<b>Input Event Binding </b><br /><br />
+<input #inputOne [value]="msg1" (input)="msg1=inputOne.value">
+
+<input [value]="msg1" (input)="setMsg($event)">
+
+{{msg1}}
+
+<br /><br /><b>Click Event Binding </b><br /><br />
+<button (click)="isValid=true">True</button>
+<button (click)="isValid=false">False</button>
+<p *ngIf="isValid">
+  Data is valid.
+</p>
+<p *ngIf="!isValid">
+  Data is not valid.
+</p>
+
+<br /><br /><b>Keydown and Keyup Event Binding </b><br /><br />
+<input on-keydown="msg2='Key down'" (keyup)="msg2='Key Up'">
+{{msg2}}
+
+<br /><br /><b>Change Event Binding </b><br /><br />
+<input (change)="changeText($event)">
+<p [innerHTML]="msg3"> </p>
