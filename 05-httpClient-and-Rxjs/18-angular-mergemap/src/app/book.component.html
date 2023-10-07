@@ -1,0 +1,10 @@
+<h3>All Books</h3>
+<div *ngFor="let book of allBooks$ | async">
+  Id: {{book.id}}, Name: {{book.name}}
+</div>
+<button (click)="addMoreBooks()">Get More Books</button>
+<h3>Search Book</h3>
+ID: <input [formControl]="bookId">
+<div *ngIf="book">
+  Id: {{book.id}}, Name: {{book.name}}
+</div>
