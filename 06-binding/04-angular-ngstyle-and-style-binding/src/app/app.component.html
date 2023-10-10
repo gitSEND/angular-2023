@@ -1,0 +1,25 @@
+<p [style.color]="result > 30 ? 'blue' : 'green'"> Hello Color World! </p>
+<p bind-style.color="result > 30 ? 'blue' : 'green'"> Hello Color World! </p>
+<p style.color="{{result > 30 ? 'blue' : 'green'}}"> Hello Color World! </p>
+
+<button [style.background-color]="colorFlag ? 'cyan' : 'grey'" [style.color]="isRed(9) ? 'red' : 'black'"> Button
+</button>
+
+<div [style.font-size.em]="isSmall ? small/8 : big/8"> Font Size Test with em</div>
+<div [style.font-size.px]="!isSmall ? small : big"> Font Size Test with px</div>
+<div [style.font-size.pt]="isSmall ? small : big"> Font Size Test with pt</div>
+<div [style.font-size.%]="!isSmall ? small * 10: big * 10"> Font Size Test with %</div>
+
+<div
+  [style.background-image]="isBackgroundRed ? 'url(\'/assets/images/red.gif\')' : 'url(\'/assets/images/green.gif\')'">
+  Style Binding Example
+</div>
+
+<br /><br />
+<div [ngStyle]="allRequiredStyles('one')">
+  NgStyle Example
+</div>
+<br /><br />
+<div bind-ngStyle="allRequiredStyles('two')">
+  NgStyle Example
+</div>
