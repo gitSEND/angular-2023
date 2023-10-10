@@ -1,0 +1,10 @@
+.required {
+  color: green;
+  font-size: 30px;
+}
+
+.optional {
+  color: red;
+  background-color: cyan;
+  font-family: cursive;
+}
