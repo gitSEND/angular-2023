@@ -1,0 +1,7 @@
+<div>
+  <b>Id: {{student.id}} </b> <br />
+  <input #studentName [value]="student.fname" (input)="student.fname=studentName.value" /> <br />
+  <input #stundentLastName [value]="student.lname" (input)="student.lname=stundentLastName.value" /> <br />
+  <br />
+  <button (click)="update()">Update</button>
+</div>
