@@ -1,0 +1,40 @@
+<b>1. msg-app</b><br /><br />
+<div>
+  <msg-app [(cdMsg)]="msg"> </msg-app>
+  <msg-app bindon-cdMsg="msg"> </msg-app>
+  <msg-app [cdMsg]="msg" (cdMsgChange)="msg=$event"> </msg-app>
+  <p>{{msg}}</p>
+</div>
+
+<b>2. text-app</b><br /><br />
+<div>
+  <text-app> </text-app>
+</div>
+
+<br /><b>3. alias-app</b><br /><br />
+<div>
+  <alias-app [(myCity)]="city"> </alias-app>
+  {{city}}
+</div>
+
+<br /><b>4. size-app</b><br /><br />
+<div>
+  <size-app [(cdTextSize)]="textSize"> </size-app>
+  <p [style.font-size.px]="textSize">Hello World!</p>
+</div>
+
+<b>5. select-app</b><br /><br />
+<div>
+  <select-app [cdColors]="colors"> </select-app>
+</div>
+
+<b>6. case-app</b><br /><br />
+<div>
+  <case-app [(myName)]="emp.name"> </case-app>
+  <p>{{emp.name}} </p>
+</div>
+
+<b>7. upper-case-app</b><br /><br />
+<div>
+  <upper-case-app> </upper-case-app>
+</div>

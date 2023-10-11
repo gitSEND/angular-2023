@@ -1,0 +1,9 @@
+<input [(ngModel)]="myMsg" />
+<br />
+<input bindon-ngModel="myMsg" />
+<br />
+<input [ngModel]="myMsg" (ngModelChange)="myMsg=$event" />
+<br />
+<input #inputMyMsg [value]="myMsg" (input)="myMsg=inputMyMsg.value" />
+<br />
+{{myMsg}}
