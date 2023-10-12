@@ -1,0 +1,37 @@
+<b> *ngFor Demo</b>
+<ul>
+  <li *ngFor="let user of users">
+    {{user.name}} - {{user.age}}
+  </li>
+</ul>
+
+
+<b> ngFor with template Tag </b>
+<ul>
+  <ng-template ngFor let-user [ngForOf]="users" let-i="index">
+    <li> Row {{i}} : {{user.name}} - {{user.age}} </li>
+  </ng-template>
+</ul>
+
+<b>index variable demo </b>
+<p *ngFor="let user of users; let i = index">
+  Row {{i}} : Name: {{user.name}}
+</p>
+
+<b>first and last variable demo </b>
+<div *ngFor="let user of users; let i = index; let f=first; let l=last;">
+  Row {{i}} : Name: {{user.name}}, is first row: {{f}}, is last row: {{l}}
+</div>
+
+<b>even and odd variable demo </b>
+<div *ngFor="let user of users; let i = index; let e=even; let o=odd;">
+  Row {{i}} : Name: {{user.name}}, is even row: {{e}}, is odd row: {{o}}
+</div>
+
+<br /><b>ngFor with component element using *ngFor</b>
+<emp-app *ngFor="let user of users" [emp]="user"> </emp-app>
+
+<br /><b>ngFor with component element using template tag </b>
+<ng-template ngFor let-user [ngForOf]="users">
+  <emp-app [emp]="user"></emp-app>
+</ng-template>
