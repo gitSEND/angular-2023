@@ -1,0 +1,46 @@
+<b>NgIf with HTML Elements </b><br />
+<p *ngIf="isValid">
+  Data is valid.
+</p>
+<p *ngIf="!isValid">
+  Data is not valid.
+</p>
+
+<div *ngFor="let id of ids">
+  Id is {{id}}
+  <div *ngIf="id%2 == 0">
+    <div [ngClass]="'one'">Even Number</div>
+  </div>
+  <div *ngIf="id%2 == 1">
+    <div [ngClass]="'two'">Odd Number</div>
+  </div>
+</div>
+
+<br />
+
+<div *ngIf="myNumEnum.TWO > 1">
+  {{myNumEnum.TWO}} is greater than 1.
+</div>
+<div *ngIf="myNumEnum.THREE < 2">
+  {{myNumEnum.TWO}} is less than 2.
+</div>
+
+<br />
+
+<div *ngIf="emp1">
+  Id:{{emp1.id}} Name: {{emp1.name}}
+</div>
+
+<div *ngIf="emp2">
+  Id:{{emp2.id}} Name: {{emp2.name}}
+</div>
+
+<br /><b>NgIf with Component Elements</b><br />
+
+<my-msg *ngIf="emp1" [pname]="emp1.name"> </my-msg>
+
+<my-msg ng-template="ngIf:emp1" [pname]="emp1.name"> </my-msg>
+
+<ng-template [ngIf]="emp1">
+  <my-msg *ngIf="emp1" [pname]="emp1.name"> </my-msg>
+</ng-template>
