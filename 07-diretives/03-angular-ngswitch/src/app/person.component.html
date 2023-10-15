@@ -1,0 +1,31 @@
+<ul [ngSwitch]="person">
+  <li *ngSwitchCase="'Mohan'">Hello Mohan</li>
+  <li *ngSwitchCase="'Sohan'">Hello Sohan</li>
+  <li *ngSwitchCase="'Vijay'">Hello Vijay</li>
+  <li *ngSwitchDefault>Bye Bye</li>
+</ul>
+
+<div *ngFor="let id of ids">
+  Id is {{id}}
+  <div ngSwitch="{{id%2}}">
+    <div *ngSwitchCase="'0'" [ngClass]="'one'">I am Even.</div>
+    <div *ngSwitchCase="'1'" [ngClass]="'two'">I am Odd.</div>
+    <div *ngSwitchDefault>Nothing Found.</div>
+  </div>
+</div>
+
+<div [ngSwitch]="myDir">
+  <b *ngSwitchCase="dirEnum.East"> East Direction</b>
+  <b *ngSwitchCase="dirEnum.West"> West Direction</b>
+  <b *ngSwitchCase="dirEnum.North">North Direction</b>
+  <b *ngSwitchCase="dirEnum.South">South Direction</b>
+  <b *ngSwitchDefault>No Direction</b>
+</div>
+
+<div [ngSwitch]="myDir">
+  <ng-template [ngSwitchCase]="dirEnum.East"> <b> East Direction</b> </ng-template>
+  <ng-template [ngSwitchCase]="dirEnum.West"> <b> West Direction</b> </ng-template>
+  <ng-template [ngSwitchCase]="dirEnum.North"> <b>North Direction</b> </ng-template>
+  <ng-template [ngSwitchCase]="dirEnum.South"> <b>South Direction</b> </ng-template>
+  <ng-template ngSwitchDefault> <b> No Direction</b> </ng-template>
+</div>
