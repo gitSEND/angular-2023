@@ -1,0 +1,20 @@
+<p [ngClass]="'one two'">
+  Using NgClass with String.
+</p>
+
+<p [ngClass]="['three', 'four']">
+  Using NgClass with Array.
+</p>
+
+<p [ngClass]="{'one': true, 'three': false }">
+  Using NgClass with Object.
+</p>
+
+<div *ngFor="let user of users; let flag = even;">
+  <div [ngClass]="{'one':flag, 'two':flag, 'three':!flag, 'four':!flag}"> {{user}} </div>
+</div>
+
+<br />
+<div [ngClass]="getCSSClasses('nightMode')">
+  Using NgClass with Component Method.
+</div>
