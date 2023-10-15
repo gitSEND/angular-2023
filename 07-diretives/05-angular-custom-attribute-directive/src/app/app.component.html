@@ -1,0 +1,27 @@
+<p myRed> myRed Directive Demo</p>
+
+<div niceTheme> niceTheme Directive Demo</div>
+
+<div myColor inputColor="blue"> myColor Directive Demo</div>
+
+<p [textSize]="txtsize"> textSize Directive Demo using Bracket []</p>
+
+<p bind-textSize="txtsize"> textSize Directive Demo using bind- prefix </p>
+
+<p textSize="{{txtsize}}"> textSize Directive Demo using Interpolation</p>
+
+<div customTheme> customTheme Directive Demo with Default Settings</div>
+
+<div customTheme tcolor="yellow" bcolor="black" tsize="30px"> customTheme Directive Demo with Custom Settings</div>
+
+<p mouseAction> mouseAction Directive Demo</p>
+
+<div>
+  <select [(ngModel)]="myColor">
+    <option value='' selected> Select Color </option>
+    <option *ngFor="let color of colors" [value]="color">
+      {{color}}
+    </option>
+  </select>
+  <p [dynamicColor]="myColor" defaultValue="red"> dynamicColor Directive Demo</p>
+</div>
