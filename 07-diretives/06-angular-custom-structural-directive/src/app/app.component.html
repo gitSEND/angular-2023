@@ -1,0 +1,35 @@
+<h3>cpIf Directive</h3>
+<div>
+  <input type="radio" name="rad1" (click)="showCpIf= true"> True
+  <input type="radio" name="rad1" (click)="showCpIf= false"> False
+</div>
+<br />
+<div *cpIf="showCpIf">
+  <b>Hello cpIf Directive.</b>
+</div>
+<ng-template [cpIf]="!showCpIf">
+  <div>
+    <b>Message not Available.</b>
+  </div>
+</ng-template>
+
+<h3>cpLoop Directive</h3>
+<ul>
+  <li *cpLoop="5">
+    Hello World!
+  </li>
+</ul>
+
+<h3>cpDelay Directive</h3>
+<div>
+  Show message after
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 2000"> 2 Seconds
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 5000"> 5 Seconds
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 7000"> 7 Seconds
+</div>
+<br />
+<div *cpIf="showCpDelay">
+  <div *cpDelay="delayInSec">
+    <b> Hello cpDelay Directive. </b>
+  </div>
+</div>
