@@ -1,0 +1,59 @@
+<h2>Custom Attribute Directives</h2>
+
+<p cpDefaultTheme> cpDefaultTheme Directive Demo</p>
+
+<h4 [cpColor]="titleColor"> cpColor Directive Demo</h4>
+
+<div cpCustomTheme> cpCustomTheme Directive Demo with Default Settings</div>
+
+<div cpCustomTheme tcolor="blue" tsize="30px"> cpCustomTheme Directive Demo with Custom Settings</div>
+
+<p defColOnEvent> defColOnEvent Directive Demo</p>
+
+<div>
+  <select [(ngModel)]="myColor">
+    <option value='' selected disabled> Select Color </option>
+    <option *ngFor="let color of colors" [value]="color">
+      {{color}}
+    </option>
+  </select>
+  <p [dynamicColOnEvent]="myColor" defaultValue="blue"> dynamicColOnEvent Directive Demo</p>
+</div>
+
+<h2>Custom Structural Directives</h2>
+
+<h3>cpIf Directive</h3>
+<div>
+  <input type="radio" name="rad1" (click)="changeCondition(true)"> True
+  <input type="radio" name="rad1" (click)="changeCondition(false)"> False
+</div>
+<br />
+<div *cpIf="showCpIf">
+  <b>Hello World!</b>
+</div>
+<ng-template [cpIf]="!showCpIf">
+  <div>
+    <b>Not Available</b>
+  </div>
+</ng-template>
+
+<h3>cpLoop Directive</h3>
+<ul>
+  <li *cpLoop="3">
+    Namaste
+  </li>
+</ul>
+
+<h3>cpDelay Directive</h3>
+<div>
+  Show message after
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 2000"> 2 Seconds
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 5000"> 5 Seconds
+  <input type="radio" name="rad2" (click)="showCpDelay= true; delayInSec = 7000"> 7 Seconds
+</div>
+<br />
+<div *cpIf="showCpDelay">
+  <div *cpDelay="delayInSec">
+    <b> Hello World! </b>
+  </div>
+</div>
