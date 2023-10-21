@@ -1,0 +1,19 @@
+<h3>Example-1</h3>
+<div [ngPlural]="itemNum">
+  <ng-template ngPluralCase="=0">There is nothing</ng-template>
+  <ng-template ngPluralCase="=1">There is one item</ng-template>
+  <ng-template ngPluralCase="other">There are {{itemNum}} items</ng-template>
+</div>
+<h3>Example-2</h3>
+<div [ngPlural]="personNum">
+  <ng-template ngPluralCase="=0">No person</ng-template>
+  <ng-template ngPluralCase="=1">One person</ng-template>
+  <ng-template ngPluralCase="=2">Two persons</ng-template>
+  <ng-template ngPluralCase="other">Many persons</ng-template>
+</div>
+<h3>Example-3</h3>
+<div [ngPlural]="minutes">
+  <ng-template ngPluralCase="=0">just now</ng-template>
+  <ng-template ngPluralCase="=1">after one minute</ng-template>
+  <ng-template ngPluralCase="other">after {{minutes}} minutes</ng-template>
+</div>
