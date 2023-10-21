@@ -1,0 +1,42 @@
+<div>
+  <p><b>Add Person</b></p>
+  <p>Name: <input [(ngModel)]="name">, Age: <input [(ngModel)]="age"> </p>
+</div>
+<button (click)="add()">ADD</button>
+
+<br /><b>Aliasing index, even, odd </b><br /><br />
+<div *ngFor="let person of allPersons; index as i; even as isEven; odd as isOdd">
+  <font color="blue" *ngIf="isEven">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}} </font>
+  <font color="red" *ngIf="isOdd">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}} </font>
+  <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+</div>
+
+<br /><b>Aliasing first, last </b> <br /><br />
+<div *ngFor="let person of allPersons; index as i; first as isFirst; last as isLast">
+  <font color="blue" *ngIf="isFirst; else elseBlock1">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+  </font>
+  <ng-template #elseBlock1>
+    <font color="red" *ngIf="isLast; else elseBlock2">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+    </font>
+    <ng-template #elseBlock2>
+      {{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+    </ng-template>
+  </ng-template>
+  <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+</div>
+
+<b>Aliasing ngForOf </b>
+<ul>
+  <li *ngFor="let person of obsPersons | async as persons; index as i">
+    {{i + 1}} out of {{persons.length}}: {{person.personId}} - {{person.name}} - {{person.age}}
+    <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+  </li>
+</ul>
+
+<br /><b>Using trackBy </b>
+<ul>
+  <li *ngFor="let person of allPersons; index as i; trackBy: personTrackByFn">
+    {{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+    <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+  </li>
+</ul>

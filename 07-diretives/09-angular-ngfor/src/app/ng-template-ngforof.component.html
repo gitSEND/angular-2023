@@ -1,0 +1,51 @@
+<div>
+  <p><b>Add Person</b></p>
+  <p>Name: <input [(ngModel)]="name">, Age: <input [(ngModel)]="age"> </p>
+</div>
+<button (click)="add()">ADD</button>
+
+<br /><b>Aliasing index, even, odd </b> <br /><br />
+<ng-template ngFor let-person [ngForOf]="allPersons" let-i="index" let-isEven="even" let-isOdd="odd">
+  <div>
+    <font color="blue" *ngIf="isEven">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}} </font>
+    <font color="red" *ngIf="isOdd">{{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}} </font>
+    <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+  </div>
+</ng-template>
+
+<br /><b>Aliasing first, last </b> <br /><br />
+<ng-template ngFor let-person [ngForOf]="allPersons" let-i="index" let-isFirst="first" let-isLast="last">
+  <div>
+    <font color="blue" *ngIf="isFirst; else elseBlock1">{{i + 1}}: {{person.personId}} - {{person.name}} -
+      {{person.age}} </font>
+    <ng-template #elseBlock1>
+      <font color="red" *ngIf="isLast; else elseBlock2">{{i + 1}}: {{person.personId}} - {{person.name}} -
+        {{person.age}} </font>
+      <ng-template #elseBlock2>
+        {{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+      </ng-template>
+    </ng-template>
+    <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+  </div>
+</ng-template>
+
+<b>Aliasing ngForOf </b>
+<ul>
+  <ng-template ngFor let-person [ngForOf]="obsPersons | async" let-persons="ngForOf" let-i="index">
+    <li>
+      {{i + 1}} out of {{persons.length}}: {{person.personId}} - {{person.name}} - {{person.age}}
+      <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+    </li>
+  </ng-template>
+</ul>
+
+
+<br /><b>Using ngForTrackBy </b>
+<ul>
+  <ng-template ngFor let-person [ngForOf]="allPersons" let-i="index" [ngForTrackBy]="personTrackByFn">
+    <li>
+      {{i + 1}}: {{person.personId}} - {{person.name}} - {{person.age}}
+      <input [(ngModel)]="person.name"> <button (click)="remove(person.personId)">Remove</button>
+    </li>
+  </ng-template>
+</ul>
