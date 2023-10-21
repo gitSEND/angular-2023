@@ -1,0 +1,11 @@
+<h3>Using NgIf</h3>
+<div>
+  <input type="radio" name="rad1" (click)="changeValue(true)"> True
+  <input type="radio" name="rad1" (click)="changeValue(false)"> False
+</div>
+<div *ngIf="isValid">
+  <b>Data is valid.</b>
+</div>
+<div *ngIf="!isValid">
+  <b>Data is invalid.</b>
+</div>

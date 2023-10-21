@@ -1,0 +1,35 @@
+<h3>Using NgIf with Then and Else</h3>
+<b>Example-1:</b><br /><br />
+<div>
+  <input type="radio" name="rad3" (click)="changeValue(true)"> True
+  <input type="radio" name="rad3" (click)="changeValue(false)"> False
+</div>
+<div *ngIf="isValid; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+  <div> <b>Data is valid.</b> </div>
+</ng-template>
+<ng-template #elseBlock>
+  <div> <b>Data is invalid.</b> </div>
+</ng-template>
+
+<br /><b>Example-2:</b><br /><br />
+<div>Enter Age: <input type="text" [(ngModel)]="age"> </div> <br />
+<div>
+  <button type="button" (click)="toggleThenBlock()"> Toggle Then Block </button>
+  <button type="button" (click)="toggleElseBlock()"> Toggle Else Block </button>
+</div>
+<br />
+<div *ngIf="age > 17; then myThenBlock; else myElseBlock"> </div>
+<ng-template #firstThenBlock>
+  <div> <b>First Then Block: Eligible to vote.</b> </div>
+</ng-template>
+<ng-template #secondThenBlock>
+  <div> <b>Second Then Block Block: Eligible to vote.</b> </div>
+</ng-template>
+
+<ng-template #firstElseBlock>
+  <div> <b>First Else Block: Not eligible to vote</b> </div>
+</ng-template>
+<ng-template #secondElseBlock>
+  <div> <b>Second Else Block: Not eligible to vote</b> </div>
+</ng-template>

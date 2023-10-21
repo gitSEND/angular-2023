@@ -1,0 +1,6 @@
+<h3>Using NgIf with AsyncPipe</h3>
+
+<div *ngIf="promiseMsg | async as message; else loading">
+  <b>{{message}}</b>
+</div>
+<ng-template #loading>Loading message...</ng-template>
