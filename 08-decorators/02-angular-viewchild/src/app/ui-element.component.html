@@ -1,0 +1,22 @@
+<h2> Using Multiple @ViewChild </h2>
+<b>1. Number Example<br />
+  <button type="button" (click)="increase()">Increase</button>
+  <button type="button" (click)="decrease()">Decrease</button>
+  <br /><br />
+  <app-number></app-number>
+
+  <br /><b>2. Stopwatch Example </b><br />
+  <button type="button" (click)="startStopwatch()">Start</button>
+  <button type="button" (click)="stopStopwatch()">Stop</button>
+  <br />
+  <app-stopwatch></app-stopwatch>
+
+  <b>3. Color Example </b><br />
+  <p cpColor>Change my Color </p>
+  <div>
+    Change Color:
+    <input type="radio" name="rad" (click)="changeColor('green')"> Green
+    <input type="radio" name="rad" (click)="changeColor('cyan')"> Cyan
+    <input type="radio" name="rad" (click)="changeColor('blue')"> Blue
+  </div>
+  <br /><b>4. Title: <input type="text" #title>
