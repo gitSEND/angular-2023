@@ -1,0 +1,66 @@
+<h3>ContentChild using Directive</h3>
+<writer>
+  <book bookId="1" bookName="Java 8 Tutorials" *ngIf="latestBook"></book>
+  <book bookId="2" bookName="Learning Angular 4" *ngIf="!latestBook"></book>
+</writer>
+<br /><button (click)="onChangeBook()">Change Book</button>
+
+<h3>ContentChildren using Directive</h3>
+<favourite-books>
+  <book bookId="1" bookName="Hibernate 4 Tutorials"></book>
+  <book bookId="2" bookName="Spring Boot Tutorials"></book>
+  <favourite-books>
+    <book bookId="3" bookName="Learning JavaScript"></book>
+  </favourite-books>
+  <favourite-books *ngIf="showAllBook">
+    <book bookId="4" bookName="Thymeleaf Tutorials"></book>
+    <book bookId="5" bookName="Android Tutorials"></book>
+  </favourite-books>
+</favourite-books>
+<br /><button (click)="onShowAllBooks()">
+  <label *ngIf="!showAllBook">Show More</label>
+  <label *ngIf="showAllBook">Show Less</label>
+</button>
+
+<h3>ContentChild using Component</h3>
+<address>
+  <city cityId="1" cityName="Varanasi" *ngIf="homeTown"></city>
+  <city cityId="2" cityName="Noida" *ngIf="!homeTown"></city>
+</address>
+<br /><button (click)="onChangeCity()">Change City</button>
+
+<h3>ContentChildren using Component</h3>
+<favourite-cities>
+  <city cityId="1" cityName="Noida"></city>
+  <city cityId="2" cityName="Mumbai"></city>
+  <favourite-cities>
+    <city cityId="3" cityName="Gurugram"></city>
+  </favourite-cities>
+  <favourite-cities *ngIf="showAllCity">
+    <city cityId="4" cityName="New Delhi"></city>
+    <city cityId="5" cityName="Bengaluru"></city>
+  </favourite-cities>
+</favourite-cities>
+<br /><button (click)="onShowAllCities()">
+  <label *ngIf="!showAllCity">Show More</label>
+  <label *ngIf="showAllCity">Show Less</label>
+</button>
+
+<h3>ContentChild using ElementRef</h3>
+<friend>
+  <div #name *ngIf="bestFriend">Mahesh</div>
+  <div #name *ngIf="!bestFriend">Krishna</div>
+</friend>
+<br /><button (click)="onChangeFriend()">Change Friend</button>
+
+<h3>ContentChildren using ElementRef</h3>
+<favourite-friends>
+  <div #name>Mohit</div>
+  <div #name>Anup</div>
+  <div #name *ngIf="showAllFriend">Nilesh</div>
+  <div #name *ngIf="showAllFriend">Sravan</div>
+</favourite-friends>
+<br /><button (click)="onShowAllFriends()">
+  <label *ngIf="!showAllFriend">Show More</label>
+  <label *ngIf="showAllFriend">Show Less</label>
+</button>
