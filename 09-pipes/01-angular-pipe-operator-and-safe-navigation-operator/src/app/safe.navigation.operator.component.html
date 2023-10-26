@@ -1,0 +1,38 @@
+<h3>Safe Navigation Operator</h3>
+
+<!--personone is undefined, It will throw error -->
+<!--p>{{personone.name}} </p>
+<p>{{personone.dob}} </p-->
+
+<!-- <b>1. </b>
+<p>{{personone?.name}} </p>
+<p>{{personone?.dob}} </p> -->
+
+<b>2. </b>
+<p *ngIf="personone">{{personone.name}} </p>
+<p *ngIf="personone">{{personone.dob}} </p>
+
+<br />
+<b>3. </b>
+<p>{{persontwo.name}} </p>
+<p>{{persontwo.dob | date:'fullDate'}} </p>
+
+<!--companyone is null, It will throw error -->
+<!--p>{{companyone.compname}} </p>
+<p>{{companyone.owner.name}} </p>
+<p>{{companyone.owner.dob}} </p-->
+
+<b>4. </b>
+<p>{{companyone?.compname}} </p>
+<p>{{companyone?.owner?.name}} </p>
+<p>{{companyone?.owner?.dob}} </p>
+
+<b>5. </b>
+<p>{{companytwo.compname}} </p>
+<p>{{companytwo.owner.name}} </p>
+<p>{{companytwo.owner.dob}} </p>
+
+<b>6. </b>
+<p>{{companythree.compname}} </p>
+<p>{{companythree.owner.name}} </p>
+<p>{{companythree.owner.dob}} </p>
