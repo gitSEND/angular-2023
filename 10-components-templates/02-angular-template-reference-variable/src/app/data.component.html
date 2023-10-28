@@ -1,0 +1,23 @@
+Mobile Number: <input type="text" #mobile placeholder="Enter Mobile Number"> <br />
+Enter State: <input type="text" ref-state> <br />
+Enter Country: <input type="text" #country> <br />
+<button (click)="getData(mobile.value, state.value, country.value)">Get Data</button>
+
+<br />
+<br />{{mobile.placeholder}}
+<br />{{mobile.value}}
+<br />{{mobile.type}}
+<br />
+<br />{{state.value}}
+<br />{{country.value}}
+
+
+<br /><br />
+<select #myColor (change)="setData(myColor.value)">
+  <option ngValue="">Selecciona una opción</option>
+  <option *ngFor="let color of colors">
+    {{color}}
+  </option>
+</select>
+
+<p [style.color]="myColor.value"> Hello World!</p>

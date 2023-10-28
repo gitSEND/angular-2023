@@ -1,0 +1,4 @@
+<form (ngSubmit)="onSubmitPersonForm(myForm)" #myForm="ngForm">
+  <input name="name" required [(ngModel)]="person.pname">
+  <button type="submit" [disabled]="!myForm.form.valid">Submit</button>
+</form>
