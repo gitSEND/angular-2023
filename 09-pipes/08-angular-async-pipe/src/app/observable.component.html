@@ -1,0 +1,6 @@
+<h3>AsyncPipe with Observable using NgFor</h3>
+<ul>
+  <li *ngFor="let book of observableBooks | async">
+    Id: {{book.id}}, Name: {{book.name}}
+  </li>
+</ul>

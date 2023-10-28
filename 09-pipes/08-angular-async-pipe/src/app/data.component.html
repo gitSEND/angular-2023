@@ -1,0 +1,14 @@
+<h3>AsyncPipe with NgIf</h3>
+
+<div *ngIf="promiseBook | async as book; else loading">
+  Id: {{book.id}}, Name: {{book.name}}
+</div>
+
+<ng-template #loading>Loading Data...</ng-template>
+
+<h3>AsyncPipe with NgSwitch</h3>
+
+<div [ngSwitch]="(promiseBook | async)?.id">
+  <div *ngSwitchCase="100">Find Actual Data</div>
+  <div *ngSwitchDefault>Showing Default Data</div>
+</div>

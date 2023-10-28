@@ -1,0 +1,6 @@
+<h3>AsyncPipe with Promise using NgFor</h3>
+<ul>
+  <li *ngFor="let book of promiseBooks | async">
+    Id: {{book.id}}, Name: {{book.name}}
+  </li>
+</ul>
