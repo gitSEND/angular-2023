@@ -1,0 +1,18 @@
+:host {
+  position: absolute;
+  margin: 5% 5%;
+  border: 5px solid blue;
+  width: 200px;
+  height: 120px;
+  background-color: blue;
+}
+
+:host-context(.my-theme) h3 {
+  background-color: green;
+  font-style: normal;
+}
+
+:host-context(.my-theme) p {
+  color: red;
+  font-size: 18px;
+}
