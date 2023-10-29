@@ -1,0 +1,27 @@
+<h3>QueryList + @ViewChildren + Directive</h3>
+<ng-template #msgTemp>
+  Welcome to you.<br />
+  Happy learning!
+</ng-template>
+<div cpMsg> </div>
+<div cpMsg> </div>
+
+<h3>QueryList + @ViewChildren + ElementRef</h3>
+<div>
+  <div #pname>Mohit</div>
+  <div #pname>Anup</div>
+  <div #pname>Nilesh</div>
+</div>
+
+<h3>QueryList + @ViewChildren + Component</h3>
+<div>
+  <writer name="Krishna" book="Angular Tutorials" #bkWriter></writer> <br />
+  <writer name="Mahesh" book="Java Tutorials" #bkWriter></writer> <br />
+  <writer name="Krishna" book="jQuery Tutorials" #bkWriter></writer> <br />
+  <writer name="Bramha" book="Hibernate Tutorials" #bkWriter *ngIf="showAllWriter"></writer> <br />
+  <writer name="Vishnu" book="Spring Tutorials" #bkWriter *ngIf="showAllWriter"></writer>
+</div>
+<button (click)="onShowAllWriters()">
+  <label *ngIf="!showAllWriter">Show More</label>
+  <label *ngIf="showAllWriter">Show Less</label>
+</button>

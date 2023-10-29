@@ -1,0 +1,24 @@
+<h3>QueryList + @ContentChildren + Directive</h3>
+<favourite-books>
+  <book bookId="1" bookName="Hibernate 4 Tutorials"></book>
+  <book bookId="2" bookName="Spring Boot Tutorials"></book>
+  <favourite-books>
+    <book bookId="3" bookName="Learning JavaScript"></book>
+  </favourite-books>
+  <favourite-books *ngIf="showAllBook">
+    <book bookId="4" bookName="Thymeleaf Tutorials"></book>
+    <book bookId="5" bookName="Android Tutorials"></book>
+  </favourite-books>
+</favourite-books>
+<br />
+<button (click)="onShowAllBooks()">
+  <label *ngIf="!showAllBook">Show More</label>
+  <label *ngIf="showAllBook">Show Less</label>
+</button>
+
+<h3>QueryList + @ContentChildren + ElementRef</h3>
+<favourite-friends>
+  <div #ffname>Mohit</div>
+  <div #ffname>Anup</div>
+  <div #ffname>Nilesh</div>
+</favourite-friends>
