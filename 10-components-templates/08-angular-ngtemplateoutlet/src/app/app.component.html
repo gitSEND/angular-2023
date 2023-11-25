@@ -1,0 +1,46 @@
+<h3>Using NgTemplateOutlet</h3>
+<!-- 1 -->
+<ng-template #welcome>
+  <p>Welcome to everyone!</p>
+</ng-template>
+<ng-container *ngTemplateOutlet="welcome"></ng-container>
+
+<!-- 2 -->
+<ng-template #book let-book="bookName" let-writer="writer" let-location>
+  <span> I am from {{location}} and like to read {{book}} written by {{writer}} ji. </span>
+</ng-template>
+<ng-container *ngTemplateOutlet="book; context: bookContext"></ng-container>
+
+<h3>NgTemplateOutlet with ngIf</h3>
+
+<ng-template #numTemplate let-num="num" let-numType="numType">
+  <span>{{myNum}} is {{numType}}.</span>
+</ng-template>
+
+<ng-container *ngIf="myNum % 2 === 0">
+  <ng-container *ngTemplateOutlet="numTemplate; context: {num: myNum, numType: 'even'}"></ng-container>
+</ng-container>
+<ng-container *ngIf="myNum % 2 === 1">
+  <ng-container *ngTemplateOutlet="numTemplate; context: {num: myNum, numType: 'odd'}"></ng-container>
+</ng-container>
+
+<h3>NgTemplateOutlet with ngFor</h3>
+
+<ng-template #userTemplate let-userId="userId" let-name="name">
+  <div>Id: {{userId}}, Name: {{name}} </div>
+</ng-template>
+
+<ng-container *ngFor="let user of allUsers">
+  <ng-container *ngTemplateOutlet="userTemplate; context: user"></ng-container>
+</ng-container>
+
+<h3>NgTemplateOutlet with ngSwitch</h3>
+
+<ng-container [ngSwitch]="myNum % 2">
+  <ng-container *ngSwitchCase="0">
+    <ng-container *ngTemplateOutlet="numTemplate; context: {num: myNum, numType: 'even'}"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchCase="1">
+    <ng-container *ngTemplateOutlet="numTemplate; context: {num: myNum, numType: 'odd'}"></ng-container>
+  </ng-container>
+</ng-container>
