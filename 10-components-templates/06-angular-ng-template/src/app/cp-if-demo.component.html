@@ -1,0 +1,15 @@
+<h3>ng-template with Custom Structural Directive</h3>
+<div>
+  Show Message:
+  <input type="radio" name="rad" (click)="showCpIf= 'yes'"> Yse
+  <input type="radio" name="rad" (click)="showCpIf= 'no'"> No
+</div>
+<br />
+<div *cpIf="showCpIf === 'yes'">
+  Hello cpIf Directive.
+</div>
+<ng-template [cpIf]="showCpIf === 'no'">
+  <div>
+    Message not Available.
+  </div>
+</ng-template>

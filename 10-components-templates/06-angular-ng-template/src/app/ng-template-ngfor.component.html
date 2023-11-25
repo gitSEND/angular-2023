@@ -1,0 +1,4 @@
+<h3>ng-template with ngFor</h3>
+<ng-template ngFor let-person [ngForOf]="allPersons" let-i="index">
+  <p>{{i + 1}}. {{person.name}} : {{person.age}} </p>
+</ng-template>
