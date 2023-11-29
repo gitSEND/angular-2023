@@ -1,0 +1,10 @@
+<p> {{valA ?? "Noida"}} </p>
+<p> {{valB ?? "Delhi"}} </p>
+<p> {{valC ?? "Prayagraj"}} </p>
+<p> {{valD ?? "Aizawl"}} </p>
+
+<p>{{(valA && valD) ?? "Aizawl"}}</p>
+<p>{{(valA || valD) ?? "Aizawl"}}</p>
+
+<p>{{user.firstName?.toUpperCase() ?? "No Data"}}</p>
+<p>{{user.lastName?.toUpperCase() ?? "No Data"}}</p>
