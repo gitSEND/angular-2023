@@ -1,0 +1,24 @@
+<h3>OnInit and OnDestroy using Component</h3>
+<b>Example-1:</b> <br /><br />
+<button type="button" (click)="onToggleCP1()">Toggle</button><br /><br />
+<div *ngIf="showCP1">
+  <app-cp1></app-cp1>
+</div>
+<br />
+<div *ngIf="cp1log">
+  <div *ngIf="cp1log.logType === 'c'">
+    <font color="green">{{cp1log.message}}</font>
+  </div>
+  <div *ngIf="cp1log.logType === 'r'">
+    <font color="red">{{cp1log.message}}</font>
+  </div>
+</div>
+
+<br /><br /><b>Example-2:</b> <br /><br />
+<button type="button" (click)="onToggleCounter()">Toggle Counter</button><br /><br />
+<div *ngIf="showCounter">
+  <app-cunter></app-cunter>
+</div>
+
+<h3>OnInit and OnDestroy using Directive</h3>
+<app-cp2></app-cp2>
