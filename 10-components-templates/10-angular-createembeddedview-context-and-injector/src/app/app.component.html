@@ -1,0 +1,11 @@
+<h3>With Component</h3>
+<ng-template #templateRef let-book="bookName" let-writer="writer" let-location>
+  <span> I am from {{location}} and like to read {{book}} written by {{writer}} ji. </span>
+  <app-student></app-student>
+</ng-template>
+<div #viewContainerRef> </div>
+
+<h3>With Directive</h3>
+<ng-container *myDir>
+  <app-student></app-student>
+</ng-container>
