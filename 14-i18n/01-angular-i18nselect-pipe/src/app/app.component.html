@@ -1,0 +1,16 @@
+<h3>Example-1</h3>
+
+<div>User Name : <b> {{ selectedPerson.gender | i18nSelect: {'male': 'Mr.', 'female': 'Miss'} }}
+    {{selectedPerson.name}} </b> </div>
+
+<h3>Example-2</h3>
+
+<div>
+  Selected Day: <b> {{ selectedDayId | i18nSelect: daysMap }} </b>
+</div>
+
+<h3>Example-3</h3>
+
+<div>
+  Number of Students: <b> {{ selectedNumber | i18nSelect: numberMap }} </b>
+</div>
