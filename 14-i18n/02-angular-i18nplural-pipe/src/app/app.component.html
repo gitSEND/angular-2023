@@ -1,0 +1,9 @@
+<h3>Example-1</h3>
+
+<div>{{ persons.length | i18nPlural: personMapping }}</div>
+
+<h3>Example-2</h3>
+
+<div *ngFor="let emp of emps">
+  {{emp.name}} {{ emp.num | i18nPlural: msgMapping }}
+</div>
