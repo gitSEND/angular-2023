@@ -1,0 +1,37 @@
+<div>
+  Company :
+  <select [(ngModel)]="company">
+    <option value="a">ABC Ltd</option>
+    <option value="b">PQR Ltd</option>
+    <option value="c">XYZ Ltd</option>
+  </select>
+  Role :
+  <select [(ngModel)]="role">
+    <option value="dir">Director</option>
+    <option value="man">Manager</option>
+    <option value="dev">Developer</option>
+  </select>
+</div>
+Time: <button (click)="inc(1)">+</button> <button (click)="inc(-1)">-</button>
+<h3>Using select</h3>
+<div i18n>
+  Ram works in {company, select, a {ABC Ltd} b {PQR Ltd} other {unknown}} company
+  and his designation is {role, select, dir {Director} man {Manager} other {not known}}.
+</div>
+<h3>Using plural</h3>
+<div i18n>
+  Task completed {minutes, plural,
+  =0 {Just now}
+  =1 {one minute ago}
+  other {{{minutes}} minutes ago}
+  }
+</div>
+<h3>Using plural and select Together</h3>
+<div i18n>
+  Task completed {minutes, plural,
+  =0 {Just now}
+  =1 {one minute ago}
+  other {{{minutes}} minutes ago}
+  }
+  by {role, select, dir {Director} man {Manager} other {Anonymous}}
+</div>

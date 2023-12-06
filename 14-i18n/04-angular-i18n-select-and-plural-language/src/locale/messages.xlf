@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3802098844454228274" datatype="html">
+        <source> Ram works in <x id="ICU" equiv-text="{company, select, a {ABC Ltd} b {PQR Ltd} other {unknown}}" xid="3961090000177065283"/> company and his designation is <x id="ICU_1" equiv-text="{role, select, dir {Director} man {Manager} other {not known}}" xid="7308830297235427139"/>.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3961090000177065283" datatype="html">
+        <source>{VAR_SELECT, select, a {ABC Ltd} b {PQR Ltd} other {unknown}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7308830297235427139" datatype="html">
+        <source>{VAR_SELECT, select, dir {Director} man {Manager} other {not known}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4307569374923247586" datatype="html">
+        <source> Task completed <x id="ICU" equiv-text="{minutes, plural,
+  =0 {Just now}
+  =1 {one minute ago}
+  other {{{minutes}} minutes ago}
+  }" xid="2821094250842634583"/>
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">22,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2905663687124825535" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {Just now} =1 {one minute ago} other {<x id="INTERPOLATION"/> minutes ago}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">23,27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">31,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="425009543348657121" datatype="html">
+        <source> Task completed <x id="ICU" equiv-text="{minutes, plural,
+  =0 {Just now}
+  =1 {one minute ago}
+  other {{{minutes}} minutes ago}
+  }" xid="2821094250842634583"/> by <x id="ICU_1" equiv-text="{role, select, dir {Director} man {Manager} other {Anonymous}}" xid="8381449721135949399"/>
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">30,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8381449721135949399" datatype="html">
+        <source>{VAR_SELECT, select, dir {Director} man {Manager} other {Anonymous}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
