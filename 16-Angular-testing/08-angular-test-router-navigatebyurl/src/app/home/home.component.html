@@ -1,0 +1,8 @@
+
+<button (click)="goToDetail(101)" class="detail-button">View Detail</button>
+<h2>Book Details</h2>
+<ul ngClass = "home">
+  <li *ngFor="let book of books" >
+    Id: {{book.id}}, Name: {{book.name}} |
+  </li>
+</ul>
